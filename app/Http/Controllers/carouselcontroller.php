@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Netflie\WhatsAppCloudApi\WhatsAppCloudApi;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Netflie\WhatsAppCloudApi\Message\Template\Component;
 class carouselcontroller extends Controller
 {
 
@@ -28,10 +29,10 @@ public function ResumableUploadAPI() {
     // Step 2: Initiate Upload
     
 
-    $uploadSessionId = "upload:MTphdHRhY2htZW50OmU4ZmMxMzQ2LTgyYjEtNDM4ZC04YTBjLTUyODUwZjg2MzUzZj9maWxlX2xlbmd0aD04NzkyJmZpbGVfdHlwZT1pbWFnZSUyRmpwZWc=?sig=ARY94ih-n7MPBkcjmmk";
+    $uploadSessionId = "upload:MTphdHRhY2htZW50OjMxZjA0YTkyLWIwODEtNGZiYy05N2FjLWRkYjM4MjQ5NDJiZD9maWxlX2xlbmd0aD0yNzY5NCZmaWxlX3R5cGU9aW1hZ2UlMkZqcGc=?sig=ARaEJ13ziD7HBW9M75k";
 
-    $accessToken = "EAALUTFGmTbYBOylcbEipNW6xzqbpZBzJQOiRijI86RTPIZBQMIFZCHQVZCPlehyWjnNykbaadE5Sv9qI11yHvnZCZBhCpEyx9qGsDb0rqubZBwz1bMMpxbG2dQMgFzxQ85HG9zuLyEl8FuOGxL1CuhqFwCYaBjEuGZApYeGZApbBhPef6K7dYWkqc6Fy7ZCNiJZAOvgPNZA5fSPgeNkUZANBLr5EZD";
-    $fileName = "C:\\Users\\tonys\\Downloads\\carousel2.jpeg";
+    $accessToken = "EAAF9Td5py1EBO6nh9llPU0jN5ZAmsJndjuAsF1s5ve2FGzmwqZB30qacriBzoRLFmZARD4t6o2qM14aZApXzLXaBjZCOgptygmR4N7dIQwASuM5QNNhr2ZBiXVJoBZB9HMftcux7Cdc57qilNzVHFWRsgUrxGnM8vJAwEbaEI7W35o8CljasMTFzXa8OcZAeZCTGhGUSiiCeX4BNuNwy9vhaAAfmk8kQaEgyxy5AZD";
+    $fileName = "C:\\Users\\tonys\\Downloads\\final-card.jpg";
 
     // Define API version
     $apiVersion = 'v19.0';
@@ -78,10 +79,10 @@ public function ResumableUploadAPI() {
 
 public function uploadImage()
     {
-            $phoneNumberId = '199957899878586'; // Replace with your actual phone number ID
-        $accessToken = 'EAADZAFtRmkG8BO4eaXfzt9nLQ8GgzD4KfexikCE5McAOLPXIqgqRTDdNSWN1k4LB1MSa4Fq7sxWzPCYL9GoC9jrxe3odqIDZBtuIFlhHqqqy3SxFjx9eiQ5G0JXWqkEoLUpslglmUw70CY2p7r004WQbKTKoKpvZAtCberDcdQI3wmwUzP7dAc8eUQG8nALuWXNbZBWCuVYrn568KJ8Y'; // Replace with your actual access token
-        $file = 'https://amateurphotographer.com/wp-content/uploads/sites/7/2023/09/Samsung_S23Ultra_vs_iPhone15ProMax_03.jpg'; // Replace with the path to your media file
-        $type = 'image/jpeg'; // Set the type of media file being uploaded
+            $phoneNumberId = '245096125347045'; // Replace with your actual phone number ID
+        $accessToken = 'EAAF9Td5py1EBOwcIEWAEO7AGGYTgT0U6QNbdyTdHtoIb0WZBDpc1sGBe9YnQTK7CZB892MZBeSpDSL8wzCmxoNBIqxT6M2B1luAxM6bHKhstFt76EOZCNTWvQH1L7rhrowkv3ZAMrQQJFnLaAq51adO0QlBYfzZCvuJB5ccDQp3E1ZAENBiHpJwoZCw9aTbXyZBubf4fwzMfap3F4wgR3QVy8wbjCOD4bEFn7ZAXAZD'; // Replace with your actual access token
+        $file = "C:\\Users\\tonys\\Downloads\\Untitled design (5).png"; // Replace with the path to your media file
+        $type = 'image/png'; // Set the type of media file being uploaded
         $messagingProduct = 'whatsapp'; // Set the messaging service
 
         $client = new Client();
@@ -114,218 +115,4 @@ public function uploadImage()
             return 'Failed to upload media.';
         }
     }
-
-    //sending the carousel template~
-public function carouselTemplate() {
-    $url = 'https://graph.facebook.com/v19.0/199957899878586/messages';
-    $accessToken = 'EAALUTFGmTbYBOylcbEipNW6xzqbpZBzJQOiRijI86RTPIZBQMIFZCHQVZCPlehyWjnNykbaadE5Sv9qI11yHvnZCZBhCpEyx9qGsDb0rqubZBwz1bMMpxbG2dQMgFzxQ85HG9zuLyEl8FuOGxL1CuhqFwCYaBjEuGZApYeGZApbBhPef6K7dYWkqc6Fy7ZCNiJZAOvgPNZA5fSPgeNkUZANBLr5EZD'; // Replace with your actual access token
-
-    $data = [
-        'messaging_product' => 'whatsapp',
-        'recipient_type' => 'individual',
-        'to' => '918639647144',
-        'type' => 'template',
-        'template' => [
-            'name' => 'summer_carousel_promo_2023',
-            'language' => [
-                'code' => 'en_US'
-            ],
-            'components' => [
-                [
-                    'type' => 'BODY',
-                    'parameters' => [
-                        [
-                            'type' => 'TEXT',
-                            'text' => '20OFF'
-                        ],
-                        [
-                            'type' => 'TEXT',
-                            'text' => '20%'
-                        ]
-                    ]
-                ],
-                [
-                    'type' => 'CAROUSEL',
-                    'cards' => [
-                        [
-                            'card_index' => 0,
-                            'components' => [
-                                [
-                                    'type' => 'HEADER',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'IMAGE',
-                                            'image' => [
-                                                'id' => '440863815001452'
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BODY',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'TEXT',
-                                            'text' => '10OFF'
-                                        ],
-                                        [
-                                            'type' => 'TEXT',
-                                            'text' => '10%'
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BUTTON',
-                                    'sub_type' => 'QUICK_REPLY',
-                                    'index' => '0',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'PAYLOAD',
-                                            'payload' => '59NqSd'
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'button',
-                                    'sub_type' => 'URL',
-                                    'index' => '1',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'payload',
-                                            'payload' => 'last_chance_2023'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ],
-                        [
-                            'card_index' => 1,
-                            'components' => [
-                                [
-                                    'type' => 'HEADER',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'IMAGE',
-                                            'image' => [
-                                                'id' => '440863815001452'
-                                            ]
-                                        ]
-                                    ]
-                           ],
-                                [
-                                    'type' => 'BODY',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'TEXT',
-                                            'text' => '10OFF'
-                                        ],
-                                        [
-                                            'type' => 'TEXT',
-                                            'text' => '10%'
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BUTTON',
-                                    'sub_type' => 'QUICK_REPLY',
-                                    'index' => '0',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'PAYLOAD',
-                                            'payload' => '59NqSd'
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BUTTON',
-                                    'sub_type' => 'URL',
-                                    'index' => '1',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'payload',
-                                            'payload' => 'last_chance_2023'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ],
-                        [
-                            'card_index' => 2,
-                            'components' => [
-                                [
-                                    'type' => 'HEADER',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'IMAGE',
-                                            'image' => [
-                                                'id' => '964710851685404'
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BODY',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'TEXT',
-                                            'text' => '30OFF'
-                                        ],
-                                        [
-                                            'type' => 'TEXT',
-                                            'text' => '30%'
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BUTTON',
-                                    'sub_type' => 'QUICK_REPLY',
-                                    'index' => '0',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'PAYLOAD',
-                                            'payload' => '7C4xhY'
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'type' => 'BUTTON',
-                                    'sub_type' => 'URL',
-                                    'index' => '1',
-                                    'parameters' => [
-                                        [
-                                            'type' => 'payload',
-                                            'payload' => 'summer_blues_2023'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ];
-
-    $jsonData = json_encode($data);
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $accessToken
-    ]);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    $response = curl_exec($ch);
-
-    if (curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
-    }
-
-    curl_close($ch);
-
-    return $response;
-}
 }

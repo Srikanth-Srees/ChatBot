@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 define('LARAVEL_START', microtime(true));
 
@@ -48,8 +49,32 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-$response = $kernel->handle(
-    $request = Request::capture()
-)->send();
+// $response = $kernel->handle(
+//     $request = Request::capture()
+// )->send();
 
-$kernel->terminate($request, $response);
+// $kernel->terminate($request, $response);
+
+try {
+    // Capture the incoming request
+    $request = Request::capture();
+
+    // Handle the incoming request using the application's HTTP kernel
+    $response = $kernel->handle($request);
+
+    // Send the response back to the client's browser
+    $response->send();
+
+} catch (Exception $e) {
+    // Handle any exceptions that occurred during the request
+    // For example, log the exception or return a custom error response
+    // Log the exception
+    Log::error($e->getMessage());
+
+    // Return a custom error response
+    $response = new Illuminate\Http\Response('An error occurred', 500);
+    $response->send();
+} finally {
+    // Terminate the request and response cycle
+    $kernel->terminate($request, $response);
+}
