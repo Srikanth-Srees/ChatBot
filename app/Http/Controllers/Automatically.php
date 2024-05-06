@@ -126,12 +126,9 @@ public function service($existingMeeting, $mobile, $Value)
 
 
 
-public function welcome($mobile) {//$mobile
+public function welcome($mobile) {
     
-    $path = Storage::url('welcome.jpg');  // Assuming main.jpg is stored in storage/app/public
-    $fullPath = config('app.url') . $path;  // Get full URL
-
-    $fullPathHttps = 'https://1bd1-2406-7400-56-7f78-b55f-b494-9e11-f9bb.ngrok-free.app/'.asset('image/welcome.jpg');
+   $fullPathHttps = 'https://' . $_SERVER['HTTP_HOST'] . '/' . asset('image/welcome.jpg');
 
 
     $url = 'https://graph.facebook.com/v19.0/245096125347045/messages';
