@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Console\Commands;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 use App\Models\Meeting;
 use Netflie\WhatsAppCloudApi\WhatsAppCloudApi;
 
@@ -56,11 +54,11 @@ public function handle()
                     
                         // Send the message using WhatsAppCloudApi
                         $whatsapp_cloud_api = new WhatsAppCloudApi([
-                            'from_phone_number_id' => '245096125347045',
-                            'access_token' => 'EAAF9Td5py1EBOwcIEWAEO7AGGYTgT0U6QNbdyTdHtoIb0WZBDpc1sGBe9YnQTK7CZB892MZBeSpDSL8wzCmxoNBIqxT6M2B1luAxM6bHKhstFt76EOZCNTWvQH1L7rhrowkv3ZAMrQQJFnLaAq51adO0QlBYfzZCvuJB5ccDQp3E1ZAENBiHpJwoZCw9aTbXyZBubf4fwzMfap3F4wgR3QVy8wbjCOD4bEFn7ZAXAZD',
+                            'from_phone_number_id' =>$_ENV['FROM_PHONE_NUMBER_ID'],
+                            'access_token' => $_ENV['ACCESS_TOKEN'],
                         ]);
                         $whatsapp_cloud_api->sendTextMessage($phone, $message);
-                            Log::info($meeting);
+                            
     }
 }
 

@@ -14,7 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/response',
         '/ResumableUploadAPI',
-        '/mediaId',
+        '/formAddress',
         '/webhook',
         '/webhook/phonepe',
         'webhook/response',
